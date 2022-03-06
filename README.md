@@ -1,2 +1,2 @@
-# hr-crud-demo
-Demo project for Spring Boot
+# HR-CRUD-DEMO :
+<h3>Demo project for Spring Boot</h3>
