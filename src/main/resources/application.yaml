@@ -7,4 +7,6 @@ spring:
     password: hr
     driver-class-name: oracle.jdbc.OracleDriver
 
-  jpa.hibernate.ddl-auto: update
+  jpa:
+    hibernate.ddl-auto: update
+    show-sql: true

@@ -1,12 +1,15 @@
-package io.bitscope.example.hr.beans;
+package io.bitscope.example.hr.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 @Entity
 @Table(name = "employees")
-public class Employee {
+public class Employee implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -37,11 +40,13 @@ public class Employee {
     @Column(name = "commission_pct", nullable = true)
     private BigDecimal commissionPct;
 
-    @Column(name = "manager_id", nullable = true)
-    private Long managerId;
+    @ManyToOne
+    @JoinColumn(name = "manager_id", nullable = true)
+    private Employee manager;
 
-    @Column(name = "department_id", nullable = true)
-    private Long departmentId;
+    @ManyToOne
+    @JoinColumn(name = "department_id", nullable = true)
+    private Department department;
 
     public Long getEmployeeId() {
         return employeeId;
@@ -115,20 +120,20 @@ public class Employee {
         this.commissionPct = commissionPct;
     }
 
-    public Long getManagerId() {
-        return managerId;
+    public Employee getManager() {
+        return manager;
     }
 
-    public void setManagerId(Long managerId) {
-        this.managerId = managerId;
+    public void setManager(Employee manager) {
+        this.manager = manager;
     }
 
-    public Long getDepartmentId() {
-        return departmentId;
+    public Department getDepartment() {
+        return department;
     }
 
-    public void setDepartmentId(Long departmentId) {
-        this.departmentId = departmentId;
+    public void setDepartment(Department department) {
+        this.department = department;
     }
 
     @Override
@@ -143,8 +148,8 @@ public class Employee {
                 ", jobId='" + jobId + '\'' +
                 ", salary=" + salary +
                 ", commissionPct=" + commissionPct +
-                ", managerId=" + managerId +
-                ", departmentId=" + departmentId +
+                ", manager=" + manager.firstName + " " + manager.lastName +
+                ", department=" + department.getDepartmentName() +
                 '}';
     }
 }
