@@ -6,5 +6,5 @@ import java.io.IOException;
 
 public interface ReportService {
 
-    String generateReport() throws JRException, IOException;
+    byte[] generateReportPdf() throws JRException, IOException;
 }

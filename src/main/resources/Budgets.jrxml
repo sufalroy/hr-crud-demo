@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.18.1.final using JasperReports Library version 6.18.1-9d75d1969e774d4f179fb3be8401e98a0e6d1611  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Budget" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5fd0a71e-437b-4be4-9c37-c655cbd0af64">
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="department" class="java.lang.String"/>
+	<field name="spending" class="java.math.BigDecimal"/>
+	<title>
+		<band height="51" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="51" backcolor="#F4FACA" uuid="8cf9ddfc-ffe5-4ea7-8c5b-93ebcb3893db"/>
+				<staticText>
+					<reportElement x="200" y="10" width="160" height="30" uuid="41d383d6-a5e9-480e-872d-a9bcaf112367"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="22"/>
+					</textElement>
+					<text><![CDATA[BUDGET]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="19">
+			<line>
+				<reportElement x="0" y="10" width="555" height="1" uuid="8b40615d-76de-4f95-b5ac-7d2b6f08a1c2">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+		</band>
+	</pageHeader>
+	<summary>
+		<band height="279">
+			<pieChart>
+				<chart evaluationTime="Report">
+					<reportElement isPrintRepeatedValues="false" x="0" y="0" width="555" height="279" uuid="d544b30d-32f1-460d-8871-b60af6221d2c"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<pieDataset>
+					<dataset resetType="Report"/>
+					<keyExpression><![CDATA[$F{department}]]></keyExpression>
+					<valueExpression><![CDATA[$F{spending}]]></valueExpression>
+					<labelExpression><![CDATA[$F{department}]]></labelExpression>
+				</pieDataset>
+				<piePlot>
+					<plot/>
+					<itemLabel/>
+				</piePlot>
+			</pieChart>
+		</band>
+	</summary>
+</jasperReport>

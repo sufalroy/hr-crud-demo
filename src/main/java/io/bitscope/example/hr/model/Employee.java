@@ -49,22 +49,6 @@ public class Employee implements Serializable {
     @JoinColumn(name = "department_id", nullable = true)
     private Department department;
 
-    public Employee() { }
-
-    public Employee(Long employeeId, String firstName, String lastName, String email, String phoneNumber, Timestamp hireDate, Job job, BigDecimal salary, BigDecimal commissionPct, Employee manager, Department department) {
-        this.employeeId = employeeId;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
-        this.hireDate = hireDate;
-        this.job = job;
-        this.salary = salary;
-        this.commissionPct = commissionPct;
-        this.manager = manager;
-        this.department = department;
-    }
-
     public Long getEmployeeId() {
         return employeeId;
     }
