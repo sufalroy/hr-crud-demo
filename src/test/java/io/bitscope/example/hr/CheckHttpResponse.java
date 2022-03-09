@@ -1,12 +1,11 @@
 package io.bitscope.example.hr;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class CheckHttpResponse {
@@ -17,9 +16,4 @@ public class CheckHttpResponse {
     @Autowired
     private TestRestTemplate testRestTemplate;
 
-    @Test
-    public void shouldPassIfStringMatches() {
-        assertEquals("Welcome to HR Web Manager",
-                testRestTemplate.getForObject("http://localhost:" + port + "/" , String.class));
-    }
 }

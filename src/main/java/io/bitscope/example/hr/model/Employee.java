@@ -31,8 +31,9 @@ public class Employee implements Serializable {
     @Column(name = "hire_date", nullable = false)
     private Timestamp hireDate;
 
-    @Column(name = "job_id", nullable = false)
-    private String jobId;
+    @ManyToOne
+    @JoinColumn(name = "job_id", nullable = false)
+    private Job job;
 
     @Column(name = "salary", nullable = true)
     private BigDecimal salary;
@@ -47,6 +48,22 @@ public class Employee implements Serializable {
     @ManyToOne
     @JoinColumn(name = "department_id", nullable = true)
     private Department department;
+
+    public Employee() { }
+
+    public Employee(Long employeeId, String firstName, String lastName, String email, String phoneNumber, Timestamp hireDate, Job job, BigDecimal salary, BigDecimal commissionPct, Employee manager, Department department) {
+        this.employeeId = employeeId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.hireDate = hireDate;
+        this.job = job;
+        this.salary = salary;
+        this.commissionPct = commissionPct;
+        this.manager = manager;
+        this.department = department;
+    }
 
     public Long getEmployeeId() {
         return employeeId;
@@ -96,12 +113,12 @@ public class Employee implements Serializable {
         this.hireDate = hireDate;
     }
 
-    public String getJobId() {
-        return jobId;
+    public Job getJob() {
+        return job;
     }
 
-    public void setJobId(String jobId) {
-        this.jobId = jobId;
+    public void setJob(Job job) {
+        this.job = job;
     }
 
     public BigDecimal getSalary() {
@@ -134,22 +151,5 @@ public class Employee implements Serializable {
 
     public void setDepartment(Department department) {
         this.department = department;
-    }
-
-    @Override
-    public String toString() {
-        return "Employee{" +
-                "employeeId=" + employeeId +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", hireDate=" + hireDate +
-                ", jobId='" + jobId + '\'' +
-                ", salary=" + salary +
-                ", commissionPct=" + commissionPct +
-                ", manager=" + manager.firstName + " " + manager.lastName +
-                ", department=" + department.getDepartmentName() +
-                '}';
     }
 }

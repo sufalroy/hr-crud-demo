@@ -1,8 +1,6 @@
 package io.bitscope.example.hr;
 
-import io.bitscope.example.hr.model.Department;
 import io.bitscope.example.hr.model.Employee;
-import io.bitscope.example.hr.repository.DepartmentRepository;
 import io.bitscope.example.hr.repository.EmployeeRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -22,18 +20,14 @@ public class TestQueryMethod {
     @Autowired
     private EmployeeRepository employeeRepository;
 
-    @Autowired
-    private DepartmentRepository departmentRepository;
-
     @Test
     @Transactional
     public void testFindByFirstName() {
         logger.info(".... testFindByFirstName ....");
 
-        List<Employee> emp = employeeRepository.findByFirstName("Patrick");
+        List<Employee> emp = employeeRepository.findByFirstNameContainingIgnoreCase("Patrick");
         Assertions.assertNotNull(emp);
         Assertions.assertFalse(emp.isEmpty());
-        logger.info("findByFirstName result: " + emp.get(0).toString());
     }
 
     @Test
@@ -41,20 +35,8 @@ public class TestQueryMethod {
     public void testFindByFirstNameAndLastName() {
         logger.info(".... testFindByFirstNameAndLastName ....");
 
-        List<Employee> emp = employeeRepository.findByFirstNameAndLastName("Adam", "Fripp");
+        List<Employee> emp = employeeRepository.findByFirstNameAndLastNameContainingIgnoreCase("Adam", "Fripp");
         Assertions.assertNotNull(emp);
         Assertions.assertFalse(emp.isEmpty());
-        logger.info("findByFirstNameAndLastName result: " + emp.get(0).toString());
-    }
-
-    @Test
-    @Transactional
-    public void testFindByDepartmentName() {
-        logger.info(".... testFindByDepartmentName ....");
-
-        List<Department> dep = departmentRepository.findByDepartmentName("IT Support");
-        Assertions.assertNotNull(dep);
-        Assertions.assertFalse(dep.isEmpty());
-        logger.info("findByDepartmentName result: " + dep.get(0).toString());
     }
 }

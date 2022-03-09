@@ -54,14 +54,4 @@ public class Department implements Serializable {
     public void setLocationId(Long locationId) {
         this.locationId = locationId;
     }
-
-    @Override
-    public String toString() {
-        return "Department{" +
-                "departmentId=" + departmentId +
-                ", departmentName='" + departmentName + '\'' +
-                ", managerId=" + managerId +
-                ", locationId=" + locationId +
-                '}';
-    }
 }
